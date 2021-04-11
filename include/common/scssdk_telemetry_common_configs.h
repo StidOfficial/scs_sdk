@@ -300,7 +300,7 @@ SCSSDK_HEADER
 /**
  * @brief Gear selected when requirements for this h-shifter slot are meet.
  *
- * Type: s32
+ * Type: indexed s32
  */
 #define SCS_TELEMETRY_CONFIG_ATTRIBUTE_slot_gear                "slot.gear"
 
@@ -310,7 +310,7 @@ SCSSDK_HEADER
  * Zero corresponds to neutral position. Mapping to physical position of
  * the handle depends on input setup.
  *
- * Type: u32
+ * Type: indexed u32
  */
 #define SCS_TELEMETRY_CONFIG_ATTRIBUTE_slot_handle_position     "slot.handle.position"
 
@@ -319,7 +319,7 @@ SCSSDK_HEADER
  *
  * Only first selector_count bits are relevant.
  *
- * Type: u32
+ * Type: indexed u32
  */
 #define SCS_TELEMETRY_CONFIG_ATTRIBUTE_slot_selectors           "slot.selectors"
 

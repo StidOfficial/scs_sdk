@@ -30,6 +30,10 @@ SCSSDK_HEADER
  * 1.03 - fixed reporting of invalid index value for wheels.count attribute
  * 1.04 - added lblinker_light and rblinker_light channels
  * 1.05 - fixed content of brand_id and brand attributes
+ * 1.06 - fixed index value for selector_count attribute. It is now SCS_U32_NIL as the
+ *        attribute is not indexed. For backward compatibility additional copy with
+ *        index 0 is also present however it will be removed in the future.
+ * 1.07 - fixed calculation of cabin_angular_acceleration channel.
  */
 //@{
 #define SCS_TELEMETRY_EUT2_GAME_VERSION_1_00            SCS_MAKE_VERSION(1, 0)
@@ -37,8 +41,10 @@ SCSSDK_HEADER
 #define SCS_TELEMETRY_EUT2_GAME_VERSION_1_02            SCS_MAKE_VERSION(1, 2)
 #define SCS_TELEMETRY_EUT2_GAME_VERSION_1_03            SCS_MAKE_VERSION(1, 3)
 #define SCS_TELEMETRY_EUT2_GAME_VERSION_1_04            SCS_MAKE_VERSION(1, 4)
-#define SCS_TELEMETRY_EUT2_GAME_VERSION_1_05            SCS_MAKE_VERSION(1, 5)
-#define SCS_TELEMETRY_EUT2_GAME_VERSION_CURRENT         SCS_TELEMETRY_EUT2_GAME_VERSION_1_05
+#define SCS_TELEMETRY_EUT2_GAME_VERSION_1_05            SCS_MAKE_VERSION(1, 5)	// Patch 1.4
+#define SCS_TELEMETRY_EUT2_GAME_VERSION_1_06            SCS_MAKE_VERSION(1, 6)
+#define SCS_TELEMETRY_EUT2_GAME_VERSION_1_07            SCS_MAKE_VERSION(1, 7)	// Patch 1.6
+#define SCS_TELEMETRY_EUT2_GAME_VERSION_CURRENT         SCS_TELEMETRY_EUT2_GAME_VERSION_1_07
 //@}
 
 // Channels defined in scssdk_telemetry_common_channels.h,
