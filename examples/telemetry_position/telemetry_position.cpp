@@ -5,14 +5,18 @@
 
 // Windows stuff.
 
-#define WINVER 0x0500
-#define _WIN32_WINNT 0x0500
-#include <windows.h>
+#ifdef _WIN32
+#  define WINVER 0x0500
+#  define _WIN32_WINNT 0x0500
+#  include <windows.h>
+#endif
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
 #include <stdarg.h>
 #include <math.h>
+#include <string.h>
 
 // SDK
 
@@ -401,8 +405,9 @@ SCSAPI_VOID scs_telemetry_shutdown(void)
 	finish_log();
 }
 
-// Telemetry api.
+// Cleanup
 
+#ifdef _WIN32
 BOOL APIENTRY DllMain(
 	HMODULE module,
 	DWORD  reason_for_call,
@@ -414,3 +419,11 @@ BOOL APIENTRY DllMain(
 	}
 	return TRUE;
 }
+#endif
+
+#ifdef __linux__
+void __attribute__ ((destructor)) unload(void)
+{
+	finish_log();
+}
+#endif
