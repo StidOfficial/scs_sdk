@@ -34,6 +34,8 @@ SCSSDK_HEADER
  *        attribute is not indexed. For backward compatibility additional copy with
  *        index 0 is also present however it will be removed in the future.
  * 1.07 - fixed calculation of cabin_angular_acceleration channel.
+ * 1.08 - a empty truck/trailer configuration event is generated when truck is removed
+ *        (e.g. after completion of quick job)
  */
 //@{
 #define SCS_TELEMETRY_EUT2_GAME_VERSION_1_00            SCS_MAKE_VERSION(1, 0)
@@ -44,7 +46,8 @@ SCSSDK_HEADER
 #define SCS_TELEMETRY_EUT2_GAME_VERSION_1_05            SCS_MAKE_VERSION(1, 5)	// Patch 1.4
 #define SCS_TELEMETRY_EUT2_GAME_VERSION_1_06            SCS_MAKE_VERSION(1, 6)
 #define SCS_TELEMETRY_EUT2_GAME_VERSION_1_07            SCS_MAKE_VERSION(1, 7)	// Patch 1.6
-#define SCS_TELEMETRY_EUT2_GAME_VERSION_CURRENT         SCS_TELEMETRY_EUT2_GAME_VERSION_1_07
+#define SCS_TELEMETRY_EUT2_GAME_VERSION_1_08            SCS_MAKE_VERSION(1, 8)	// Patch 1.9
+#define SCS_TELEMETRY_EUT2_GAME_VERSION_CURRENT         SCS_TELEMETRY_EUT2_GAME_VERSION_1_08
 //@}
 
 // Channels defined in scssdk_telemetry_common_channels.h,
