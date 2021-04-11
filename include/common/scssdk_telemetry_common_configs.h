@@ -313,6 +313,20 @@ SCSSDK_HEADER
 #define SCS_TELEMETRY_CONFIG_ATTRIBUTE_wheel_radius             "wheel.radius"
 
 /**
+ * @brief Is the wheel powered?
+ *
+ * Type: indexed bool
+ */
+#define SCS_TELEMETRY_CONFIG_ATTRIBUTE_wheel_powered            "wheel.powered"
+
+/**
+ * @brief Is the wheel liftable?
+ *
+ * Type: indexed bool
+ */
+#define SCS_TELEMETRY_CONFIG_ATTRIBUTE_wheel_liftable           "wheel.liftable"
+
+/**
  * @brief Number of selectors (e.g. range/splitter toggles).
  *
  * Type: u32

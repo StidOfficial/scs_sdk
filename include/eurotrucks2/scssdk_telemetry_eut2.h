@@ -37,6 +37,7 @@ SCSSDK_HEADER
  * 1.08 - a empty truck/trailer configuration event is generated when truck is removed
  *        (e.g. after completion of quick job)
  * 1.09 - added time and job related info
+ * 1.10 - added information about liftable axes
  */
 //@{
 #define SCS_TELEMETRY_EUT2_GAME_VERSION_1_00            SCS_MAKE_VERSION(1, 0)
@@ -44,12 +45,13 @@ SCSSDK_HEADER
 #define SCS_TELEMETRY_EUT2_GAME_VERSION_1_02            SCS_MAKE_VERSION(1, 2)
 #define SCS_TELEMETRY_EUT2_GAME_VERSION_1_03            SCS_MAKE_VERSION(1, 3)
 #define SCS_TELEMETRY_EUT2_GAME_VERSION_1_04            SCS_MAKE_VERSION(1, 4)
-#define SCS_TELEMETRY_EUT2_GAME_VERSION_1_05            SCS_MAKE_VERSION(1, 5)	// Patch 1.4
+#define SCS_TELEMETRY_EUT2_GAME_VERSION_1_05            SCS_MAKE_VERSION(1, 5)  // Patch 1.4
 #define SCS_TELEMETRY_EUT2_GAME_VERSION_1_06            SCS_MAKE_VERSION(1, 6)
-#define SCS_TELEMETRY_EUT2_GAME_VERSION_1_07            SCS_MAKE_VERSION(1, 7)	// Patch 1.6
-#define SCS_TELEMETRY_EUT2_GAME_VERSION_1_08            SCS_MAKE_VERSION(1, 8)	// Patch 1.9
-#define SCS_TELEMETRY_EUT2_GAME_VERSION_1_09            SCS_MAKE_VERSION(1, 9)	// Patch 1.14
-#define SCS_TELEMETRY_EUT2_GAME_VERSION_CURRENT         SCS_TELEMETRY_EUT2_GAME_VERSION_1_09
+#define SCS_TELEMETRY_EUT2_GAME_VERSION_1_07            SCS_MAKE_VERSION(1, 7)  // Patch 1.6
+#define SCS_TELEMETRY_EUT2_GAME_VERSION_1_08            SCS_MAKE_VERSION(1, 8)  // Patch 1.9
+#define SCS_TELEMETRY_EUT2_GAME_VERSION_1_09            SCS_MAKE_VERSION(1, 9)  // Patch 1.14 beta
+#define SCS_TELEMETRY_EUT2_GAME_VERSION_1_10            SCS_MAKE_VERSION(1, 10) // Patch 1.14
+#define SCS_TELEMETRY_EUT2_GAME_VERSION_CURRENT         SCS_TELEMETRY_EUT2_GAME_VERSION_1_10
 //@}
 
 // Game specific units.

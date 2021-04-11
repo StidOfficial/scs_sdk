@@ -584,7 +584,7 @@ SCSSDK_HEADER
 
 /**
  * @brief Vertical displacement of the wheel from its
- * neutral position in meters.
+ * axis in meters.
  *
  * Type: indexed float
  */
@@ -638,6 +638,34 @@ SCSSDK_HEADER
  * Type: indexed float
  */
 #define SCS_TELEMETRY_TRUCK_CHANNEL_wheel_rotation              "truck.wheel.rotation"
+
+/**
+ * @brief Lift state of the wheel <0;1>
+ *
+ * For use with simple lifted/non-lifted test or logical
+ * visualization of the lifting progress.
+ *
+ * Value of 0 corresponds to non-lifted axle.
+ * Value of 1 corresponds to fully lifted axle.
+ *
+ * Set to zero or not provided for non-liftable axles.
+ *
+ * Type: indexed float
+ */
+#define SCS_TELEMETRY_TRUCK_CHANNEL_wheel_lift                  "truck.wheel.lift"
+
+/**
+ * @brief Vertical displacement of the wheel axle
+ * from its normal position in meters as result of
+ * lifting.
+ *
+ * Might have non-linear relation to lift ratio.
+ *
+ * Set to zero or not provided for non-liftable axles.
+ *
+ * Type: indexed float
+ */
+#define SCS_TELEMETRY_TRUCK_CHANNEL_wheel_lift_offset           "truck.wheel.lift.offset"
 
 SCSSDK_FOOTER
 
