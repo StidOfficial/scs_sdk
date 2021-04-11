@@ -19,6 +19,8 @@
 #include "scssdk_telemetry.h"
 #include "eurotrucks2/scssdk_eut2.h"
 #include "eurotrucks2/scssdk_telemetry_eut2.h"
+#include "amtrucks/scssdk_ats.h"
+#include "amtrucks/scssdk_telemetry_ats.h"
 
 #define UNUSED(x)
 
@@ -371,10 +373,7 @@ SCSAPI_RESULT scs_telemetry_init(const scs_u32_t version, const scs_telemetry_in
 
 	log_line("Game '%s' %u.%u", version_params->common.game_id, SCS_GET_MAJOR_VERSION(version_params->common.game_version), SCS_GET_MINOR_VERSION(version_params->common.game_version));
 
-	if (strcmp(version_params->common.game_id, SCS_GAME_ID_EUT2) != 0) {
-		log_line("WARNING: Unsupported game, some features or values might behave incorrectly");
-	}
-	else {
+	if (strcmp(version_params->common.game_id, SCS_GAME_ID_EUT2) == 0) {
 
 		// Bellow the minimum version there might be some missing features (only minor change) or
 		// incompatible values (major change).
@@ -390,6 +389,26 @@ SCSAPI_RESULT scs_telemetry_init(const scs_u32_t version, const scs_telemetry_in
 		if (SCS_GET_MAJOR_VERSION(version_params->common.game_version) > SCS_GET_MAJOR_VERSION(IMPLEMENTED_VERSION)) {
 			log_line("WARNING: Too new major version of the game, some features might behave incorrectly");
 		}
+	}
+	else if (strcmp(version_params->common.game_id, SCS_GAME_ID_ATS) == 0) {
+
+		// Bellow the minimum version there might be some missing features (only minor change) or
+		// incompatible values (major change).
+
+		const scs_u32_t MINIMAL_VERSION = SCS_TELEMETRY_ATS_GAME_VERSION_1_00;
+		if (version_params->common.game_version < MINIMAL_VERSION) {
+			log_line("WARNING: Too old version of the game, some features might behave incorrectly");
+		}
+
+		// Future versions are fine as long the major version is not changed.
+
+		const scs_u32_t IMPLEMENTED_VERSION = SCS_TELEMETRY_ATS_GAME_VERSION_CURRENT;
+		if (SCS_GET_MAJOR_VERSION(version_params->common.game_version) > SCS_GET_MAJOR_VERSION(IMPLEMENTED_VERSION)) {
+			log_line("WARNING: Too new major version of the game, some features might behave incorrectly");
+		}
+	}
+	else {
+		log_line("WARNING: Unsupported game, some features or values might behave incorrectly");
 	}
 
 	// Register for events. Note that failure to register those basic events
