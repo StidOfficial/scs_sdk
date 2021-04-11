@@ -200,14 +200,9 @@ SCSAPI_VOID telemetry_pause(const scs_event_t event, const void *const UNUSED(ev
 	print_header = true;
 }
 
-SCSAPI_VOID telemetry_configuration(const scs_event_t event, const void *const event_info, const scs_context_t UNUSED(context))
+void telemetry_print_attributes(const scs_named_value_t *const attributes)
 {
-	// Here we just print the configuration info.
-
-	const struct scs_telemetry_configuration_t *const info = static_cast<const scs_telemetry_configuration_t *>(event_info);
-	log_line("Configuration: %s", info->id);
-
-	for (const scs_named_value_t *current = info->attributes; current->name; ++current) {
+	for (const scs_named_value_t *current = attributes; current->name; ++current) {
 		log_print("  %s", current->name);
 		if (current->index != SCS_U32_NIL) {
 			log_print("[%u]", static_cast<unsigned>(current->index));
@@ -228,6 +223,10 @@ SCSAPI_VOID telemetry_configuration(const scs_event_t event, const void *const e
 			}
 			case SCS_VALUE_TYPE_u32: {
 				log_line("u32 = %u", static_cast<unsigned>(current->value.value_u32.value));
+				break;
+			}
+			case SCS_VALUE_TYPE_s64: {
+				log_line("s64 = %" SCS_PF_S64, current->value.value_s64.value);
 				break;
 			}
 			case SCS_VALUE_TYPE_u64: {
@@ -303,6 +302,28 @@ SCSAPI_VOID telemetry_configuration(const scs_event_t event, const void *const e
 			}
 		}
 	}
+}
+
+SCSAPI_VOID telemetry_configuration(const scs_event_t event, const void *const event_info, const scs_context_t UNUSED(context))
+{
+	// Here we just print the configuration info.
+
+	const struct scs_telemetry_configuration_t *const info = static_cast<const scs_telemetry_configuration_t *>(event_info);
+	log_line("Configuration: %s", info->id);
+
+	telemetry_print_attributes(info->attributes);
+
+	print_header = true;
+}
+
+SCSAPI_VOID telemetry_gameplay_event(const scs_event_t event, const void *const event_info, const scs_context_t UNUSED(context))
+{
+	// Here we just print the event info.
+
+	const struct scs_telemetry_gameplay_event_t *const info = static_cast<const scs_telemetry_gameplay_event_t *>(event_info);
+	log_line("Gameplay event: %s", info->id);
+
+	telemetry_print_attributes(info->attributes);
 
 	print_header = true;
 }
@@ -361,11 +382,11 @@ SCSAPI_RESULT scs_telemetry_init(const scs_u32_t version, const scs_telemetry_in
 {
 	// We currently support only one version.
 
-	if (version != SCS_TELEMETRY_VERSION_1_00) {
+	if (version != SCS_TELEMETRY_VERSION_1_01) {
 		return SCS_RESULT_unsupported;
 	}
 
-	const scs_telemetry_init_params_v100_t *const version_params = static_cast<const scs_telemetry_init_params_v100_t *>(params);
+	const scs_telemetry_init_params_v101_t *const version_params = static_cast<const scs_telemetry_init_params_v101_t *>(params);
 	if (! init_log()) {
 		version_params->common.log(SCS_LOG_TYPE_error, "Unable to initialize the log file");
 		return SCS_RESULT_generic_error;
@@ -379,7 +400,7 @@ SCSAPI_RESULT scs_telemetry_init(const scs_u32_t version, const scs_telemetry_in
 
 	if (strcmp(version_params->common.game_id, SCS_GAME_ID_EUT2) == 0) {
 
-		// Bellow the minimum version there might be some missing features (only minor change) or
+		// Below the minimum version there might be some missing features (only minor change) or
 		// incompatible values (major change).
 
 		const scs_u32_t MINIMAL_VERSION = SCS_TELEMETRY_EUT2_GAME_VERSION_1_00;
@@ -396,7 +417,7 @@ SCSAPI_RESULT scs_telemetry_init(const scs_u32_t version, const scs_telemetry_in
 	}
 	else if (strcmp(version_params->common.game_id, SCS_GAME_ID_ATS) == 0) {
 
-		// Bellow the minimum version there might be some missing features (only minor change) or
+		// Below the minimum version there might be some missing features (only minor change) or
 		// incompatible values (major change).
 
 		const scs_u32_t MINIMAL_VERSION = SCS_TELEMETRY_ATS_GAME_VERSION_1_00;
@@ -438,6 +459,10 @@ SCSAPI_RESULT scs_telemetry_init(const scs_u32_t version, const scs_telemetry_in
 	// data, it can operate even if that fails.
 
 	version_params->register_for_event(SCS_TELEMETRY_EVENT_configuration, telemetry_configuration, NULL);
+
+	// Register for gameplay events.
+
+	version_params->register_for_event(SCS_TELEMETRY_EVENT_gameplay, telemetry_gameplay_event, NULL);
 
 	// Register for channels. The channel might be missing if the game does not support
 	// it (SCS_RESULT_not_found) or if does not support the requested type
