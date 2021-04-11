@@ -36,6 +36,7 @@ SCSSDK_HEADER
  * 1.07 - fixed calculation of cabin_angular_acceleration channel.
  * 1.08 - a empty truck/trailer configuration event is generated when truck is removed
  *        (e.g. after completion of quick job)
+ * 1.09 - added time and job related info
  */
 //@{
 #define SCS_TELEMETRY_EUT2_GAME_VERSION_1_00            SCS_MAKE_VERSION(1, 0)
@@ -47,8 +48,14 @@ SCSSDK_HEADER
 #define SCS_TELEMETRY_EUT2_GAME_VERSION_1_06            SCS_MAKE_VERSION(1, 6)
 #define SCS_TELEMETRY_EUT2_GAME_VERSION_1_07            SCS_MAKE_VERSION(1, 7)	// Patch 1.6
 #define SCS_TELEMETRY_EUT2_GAME_VERSION_1_08            SCS_MAKE_VERSION(1, 8)	// Patch 1.9
-#define SCS_TELEMETRY_EUT2_GAME_VERSION_CURRENT         SCS_TELEMETRY_EUT2_GAME_VERSION_1_08
+#define SCS_TELEMETRY_EUT2_GAME_VERSION_1_09            SCS_MAKE_VERSION(1, 9)	// Patch 1.14
+#define SCS_TELEMETRY_EUT2_GAME_VERSION_CURRENT         SCS_TELEMETRY_EUT2_GAME_VERSION_1_09
 //@}
+
+// Game specific units.
+//
+// @li The game uses Euro as internal currency provided
+//     by the telemetry unless documented otherwise.
 
 // Channels defined in scssdk_telemetry_common_channels.h,
 // scssdk_telemetry_truck_common_channels.h and
@@ -64,17 +71,11 @@ SCSSDK_HEADER
 // @li The pressures, temperatures and voltages are not simulated.
 //     They are very loosely approximated.
 
-// Additionally following channels are supported:
-// TODO: Date time, next rest stop, remaining distance
-
 // Configurations defined in scssdk_telemetry_common_configs.h are
 // supported with following exceptions and limitations as of v1.00:
 //
 // @li The localized strings are not updated when different in-game
 //     language is selected.
-
-// Additionally following configurations are supported:
-// TODO: Job info
 
 SCSSDK_FOOTER
 

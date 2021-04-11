@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="telemetry"
-	ProjectGUID="{A682E7F2-5D47-4223-9605-CC75FFCB813C}"
-	RootNamespace="telemetry"
+	Name="telemetry_mem"
+	ProjectGUID="{9BAFDA36-E52E-41fc-A143-C94B8FB0294B}"
+	RootNamespace="telemetry_mem"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="196613"
 	>
@@ -65,7 +65,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				LinkIncremental="2"
-				ModuleDefinitionFile="telemetry.def"
+				ModuleDefinitionFile="telemetry_mem.def"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="1"
@@ -139,7 +139,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				LinkIncremental="1"
-				ModuleDefinitionFile="telemetry.def"
+				ModuleDefinitionFile="telemetry_mem.def"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
@@ -215,7 +215,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				LinkIncremental="2"
-				ModuleDefinitionFile="telemetry.def"
+				ModuleDefinitionFile="telemetry_mem.def"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="17"
@@ -290,7 +290,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				LinkIncremental="1"
-				ModuleDefinitionFile="telemetry.def"
+				ModuleDefinitionFile="telemetry_mem.def"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
@@ -324,7 +324,7 @@
 	</References>
 	<Files>
 		<File
-			RelativePath=".\telemetry.cpp"
+			RelativePath=".\telemetry_mem.cpp"
 			>
 		</File>
 	</Files>

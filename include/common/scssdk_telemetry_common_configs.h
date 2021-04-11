@@ -93,6 +93,28 @@ SCSSDK_HEADER
  */
 #define SCS_TELEMETRY_CONFIG_trailer                            "trailer"
 
+/**
+ * @brief Static configuration of the job.
+ *
+ * If empty set of attributes is returned, there is no job.
+ *
+ * Supported attributes:
+ * @li cargo_id
+ * @li cargo
+ * @li cargo_mass
+ * @li destination_city_id
+ * @li destination_city
+ * @li source_city_id
+ * @li source_city
+ * @li destination_company_id
+ * @li destination_company
+ * @li source_company_id
+ * @li source_company
+ * @li income - represents expected income for the job without any penalties
+ * @li delivery_time
+ */
+#define SCS_TELEMETRY_CONFIG_job                                "job"
+
  // Attributes
 
  /**
@@ -336,6 +358,127 @@ SCSSDK_HEADER
 #define SCS_SHIFTER_TYPE_automatic                              "automatic"
 #define SCS_SHIFTER_TYPE_manual                                 "manual"
 #define SCS_SHIFTER_TYPE_hshifter                               "hshifter"
+
+ // Attributes
+
+ /**
+ * @brief Id of the cargo for internal use by code.
+ *
+ * Limited to C-identifier characters and dots.
+ *
+ * Type: string
+ */
+#define SCS_TELEMETRY_CONFIG_ATTRIBUTE_cargo_id                 "cargo.id"
+
+/**
+ * @brief Name of the cargo for display purposes.
+ *
+ * Localized using the current in-game language.
+ *
+ * Type: string
+ */
+#define SCS_TELEMETRY_CONFIG_ATTRIBUTE_cargo                    "cargo"
+
+/**
+ * @brief Mass of the cargo in kilograms.
+ *
+ * Type: float
+ */
+#define SCS_TELEMETRY_CONFIG_ATTRIBUTE_cargo_mass               "cargo.mass"
+
+/**
+ * @brief Id of the destination city for internal use by code.
+ *
+ * Limited to C-identifier characters and dots.
+ *
+ * Type: string
+ */
+#define SCS_TELEMETRY_CONFIG_ATTRIBUTE_destination_city_id      "destination.city.id"
+
+/**
+ * @brief Name of the destination city for display purposes.
+ *
+ * Localized using the current in-game language.
+ *
+ * Type: string
+ */
+#define SCS_TELEMETRY_CONFIG_ATTRIBUTE_destination_city         "destination.city"
+
+/**
+ * @brief Id of the destination company for internal use by code.
+ *
+ * Limited to C-identifier characters and dots.
+ *
+ * Type: string
+ */
+#define SCS_TELEMETRY_CONFIG_ATTRIBUTE_destination_company_id   "destination.company.id"
+
+/**
+ * @brief Name of the destination company for display purposes.
+ *
+ * Localized using the current in-game language.
+ *
+ * Type: string
+ */
+#define SCS_TELEMETRY_CONFIG_ATTRIBUTE_destination_company      "destination.company"
+
+/**
+ * @brief Id of the source city for internal use by code.
+ *
+ * Limited to C-identifier characters and dots.
+ *
+ * Type: string
+ */
+#define SCS_TELEMETRY_CONFIG_ATTRIBUTE_source_city_id           "source.city.id"
+
+/**
+ * @brief Name of the source city for display purposes.
+ *
+ * Localized using the current in-game language.
+ *
+ * Type: string
+ */
+#define SCS_TELEMETRY_CONFIG_ATTRIBUTE_source_city              "source.city"
+
+/**
+ * @brief Id of the source company for internal use by code.
+ *
+ * Limited to C-identifier characters and dots.
+ *
+ * Type: string
+ */
+#define SCS_TELEMETRY_CONFIG_ATTRIBUTE_source_company_id        "source.company.id"
+
+/**
+ * @brief Name of the source company for display purposes.
+ *
+ * Localized using the current in-game language.
+ *
+ * Type: string
+ */
+#define SCS_TELEMETRY_CONFIG_ATTRIBUTE_source_company           "source.company"
+
+/**
+ * @brief Reward in internal game-specific currency.
+ *
+ * For detailed information about the currency see "Game specific units"
+ * documentation in scssdk_telemetry_<game_id>.h
+ *
+ * Type: u64
+ */
+#define SCS_TELEMETRY_CONFIG_ATTRIBUTE_income                   "income"
+
+/**
+ * @brief Absolute in-game time of end of job delivery window.
+ *
+ * Delivering the job after this time will cause it be late.
+ *
+ * See SCS_TELEMETRY_CHANNEL_game_time for more info about absolute time.
+ * Time remaining for delivery can be obtained like (delivery_time - game_time).
+ *
+ * Type: u32
+ */
+#define SCS_TELEMETRY_CONFIG_ATTRIBUTE_delivery_time            "delivery.time"
 
 SCSSDK_FOOTER
 
