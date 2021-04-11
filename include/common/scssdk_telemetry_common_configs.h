@@ -62,6 +62,7 @@ SCSSDK_HEADER
  * @li fuel_capacity
  * @li fuel_warning_factor
  * @li adblue_capacity
+ * @li ablue_warning_factor
  * @li air_pressure_warning
  * @li air_pressure_emergency
  * @li oil_pressure_warning
@@ -185,6 +186,14 @@ SCSSDK_HEADER
 #define SCS_TELEMETRY_CONFIG_ATTRIBUTE_adblue_capacity          "adblue.capacity"
 
 /**
+ * @brief Fraction of the adblue capacity bellow which
+ * is activated the adblue warning.
+ *
+ * Type: float
+ */
+#define SCS_TELEMETRY_CONFIG_ATTRIBUTE_adblue_warning_factor     "adblue.warning.factor"
+
+/**
  * @brief Pressure of the air in the tank bellow which
  * the warning activates.
  *
@@ -243,6 +252,13 @@ SCSSDK_HEADER
 #define SCS_TELEMETRY_CONFIG_ATTRIBUTE_reverse_gear_count       "gears.reverse"
 
 /**
+ * @brief Differential ratio of the truck.
+ *
+ * Type: float
+ */
+#define SCS_TELEMETRY_CONFIG_ATTRIBUTE_differential_ratio       "differential.ratio"
+
+/**
  * @brief Number of steps in the retarder.
  *
  * Set to zero if retarder is not mounted to the truck.
@@ -250,6 +266,20 @@ SCSSDK_HEADER
  * Type: u32
  */
 #define SCS_TELEMETRY_CONFIG_ATTRIBUTE_retarder_step_count      "retarder.steps"
+
+/**
+ * @brief Forward transmission ratios.
+ *
+ * Type: indexed float
+ */
+#define SCS_TELEMETRY_CONFIG_ATTRIBUTE_forward_ratio            "forward.ratio"
+
+/**
+ * @brief Reverse transmission ratios.
+ *
+ * Type: indexed float
+ */
+#define SCS_TELEMETRY_CONFIG_ATTRIBUTE_reverse_ratio            "reverse.ratio"
 
 /**
  * @brief Position of the cabin in the vehicle space.

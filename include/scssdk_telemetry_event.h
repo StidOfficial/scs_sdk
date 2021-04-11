@@ -15,7 +15,7 @@ typedef scs_u32_t scs_event_t;
 /**
  * @name Telemetry event types.
  */
-//{
+//@{
 
 /**
  * @brief Used to mark invalid value of event type.

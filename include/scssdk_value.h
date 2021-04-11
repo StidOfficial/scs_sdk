@@ -102,7 +102,7 @@ struct scs_value_dvector_t
 struct scs_value_euler_t
 {
         /**
-         * @name Heading.
+         * @brief Heading.
          *
          * Stored in unit range where <0,1) corresponds to <0,360).
          *
@@ -113,7 +113,7 @@ struct scs_value_euler_t
         scs_float_t heading;
 
         /**
-         * @name Pitch
+         * @brief Pitch
          *
          * Stored in unit range where <-0.25,0.25> corresponds to <-90,90>.
          *
@@ -124,7 +124,7 @@ struct scs_value_euler_t
         scs_float_t pitch;
 
         /**
-         * @name Rool
+         * @brief Roll
          *
          * Stored in unit range where <-0.5,0.5> corresponds to <-180,180>.
          *

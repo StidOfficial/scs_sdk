@@ -14,7 +14,7 @@ SCSSDK_HEADER
 /**
  * @name Telemetry channel flags.
  */
-//{
+//@{
 
 /**
  * @brief No specific flags.

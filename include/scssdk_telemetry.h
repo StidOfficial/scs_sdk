@@ -33,7 +33,9 @@ SCSSDK_HEADER
  */
 struct scs_telemetry_init_params_t
 {
+	void	method_indicating_this_is_not_a_c_struct(void);
 };
+
 
 /**
  * @brief Initialization parameters for the 1.00 version of the telemetry API.
